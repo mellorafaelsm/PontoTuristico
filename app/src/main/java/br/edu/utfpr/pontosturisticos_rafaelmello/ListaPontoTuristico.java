@@ -19,6 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +45,15 @@ public class ListaPontoTuristico extends AppCompatActivity {
 //        ArrayAdapter<PontoTuristico> adaptador = new ArrayAdapter<PontoTuristico>(this, android.R.layout.simple_list_item_1, listfiltrado);
         PontoAdapter adaptador = new PontoAdapter(this,listfiltrado);
         listView.setAdapter(adaptador);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListaPontoTuristico.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         registerForContextMenu(listView);
 }

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ListaPontoTuristico">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="325dp"
+        android:layout_marginTop="500dp"
+        android:clickable="true"
+        android:tint="#FFFFFF"
+        app:backgroundTint="#3F51B5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_mapmode" />
+
     <ListView
         android:id="@+id/lista_pontos"
         android:layout_width="409dp"
@@ -13,5 +26,9 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ListView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
