@@ -22,7 +22,6 @@ public class PontoTuristicoDAO {
         values.put("latitude", pontoTuristico.getLatitude());
         values.put("longitude", pontoTuristico.getLongitude());
         values.put("foto", pontoTuristico.getFoto());
-        System.out.println(Arrays.toString(pontoTuristico.getFoto()));
         return values;
     }
 

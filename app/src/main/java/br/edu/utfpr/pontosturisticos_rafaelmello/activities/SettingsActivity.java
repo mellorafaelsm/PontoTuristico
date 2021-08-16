@@ -1,6 +1,5 @@
 package br.edu.utfpr.pontosturisticos_rafaelmello.activities;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MenuItem;
@@ -10,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
-
-import java.util.Objects;
 
 import br.edu.utfpr.pontosturisticos_rafaelmello.R;
 
@@ -35,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home) finish();
+        if (item.getItemId() == android.R.id.home) finish();
         return super.onOptionsItemSelected(item);
     }
 
@@ -53,10 +50,6 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 });
             }
-        }
-
-        public SharedPreferences getPreferences(String key) {
-            return Objects.requireNonNull(getPreferenceManager().findPreference(key)).getSharedPreferences();
         }
     }
 }
