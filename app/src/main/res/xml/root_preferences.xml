@@ -1,0 +1,24 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <EditTextPreference
+            android:negativeButtonText="@string/btn_cancelar"
+            app:key="zoom"
+            app:title="@string/zoom_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:key="map"
+            android:negativeButtonText="@string/btn_cancelar"
+            app:defaultValue="false"
+            app:entries="@array/mapType_entries"
+            app:entryValues="@array/mapType_values"
+            app:title="@string/mapType_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

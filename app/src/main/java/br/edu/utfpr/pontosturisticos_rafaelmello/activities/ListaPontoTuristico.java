@@ -1,9 +1,7 @@
-package br.edu.utfpr.pontosturisticos_rafaelmello;
+package br.edu.utfpr.pontosturisticos_rafaelmello.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,9 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -24,13 +20,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaPontoTuristico extends AppCompatActivity {
+import br.edu.utfpr.pontosturisticos_rafaelmello.PontoAdapter;
+import br.edu.utfpr.pontosturisticos_rafaelmello.PontoTuristico;
+import br.edu.utfpr.pontosturisticos_rafaelmello.PontoTuristicoDAO;
+import br.edu.utfpr.pontosturisticos_rafaelmello.R;
 
+public class ListaPontoTuristico extends AppCompatActivity {
 
     private ListView listView;
     private PontoTuristicoDAO dao;
     private List<PontoTuristico> list;
-    private List<PontoTuristico> listfiltrado = new ArrayList<>();
+    private final List<PontoTuristico> listfiltrado = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class ListaPontoTuristico extends AppCompatActivity {
         listfiltrado.addAll(list);
 
 //        ArrayAdapter<PontoTuristico> adaptador = new ArrayAdapter<PontoTuristico>(this, android.R.layout.simple_list_item_1, listfiltrado);
-        PontoAdapter adaptador = new PontoAdapter(this,listfiltrado);
+        PontoAdapter adaptador = new PontoAdapter(this, listfiltrado);
         listView.setAdapter(adaptador);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -55,10 +55,19 @@ public class ListaPontoTuristico extends AppCompatActivity {
             }
         });
 
-        registerForContextMenu(listView);
-}
+        FloatingActionButton fabConf = findViewById(R.id.fabConf);
+        fabConf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListaPontoTuristico.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
-    public boolean onCreateOptionsMenu(Menu menu){
+        registerForContextMenu(listView);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_principal, menu);
 
@@ -80,22 +89,22 @@ public class ListaPontoTuristico extends AppCompatActivity {
     }
 
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu,v,menuInfo);
+        super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater i = getMenuInflater();
         i.inflate(R.menu.menu_contexto, menu);
     }
 
-    public void procuraPonto(String titulo){
+    public void procuraPonto(String titulo) {
         listfiltrado.clear();
-        for (PontoTuristico p : list){
-            if (p.getTitulo().toLowerCase().contains(titulo.toLowerCase())){
+        for (PontoTuristico p : list) {
+            if (p.getTitulo().toLowerCase().contains(titulo.toLowerCase())) {
                 listfiltrado.add(p);
             }
         }
         listView.invalidateViews();
     }
 
-    public void excluir(MenuItem item){
+    public void excluir(MenuItem item) {
         //pega posicao
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final PontoTuristico pontoExcluir = listfiltrado.get(menuInfo.position);
@@ -112,12 +121,12 @@ public class ListaPontoTuristico extends AppCompatActivity {
         dialog.show();
     }
 
-    public void cadastrar(MenuItem item){
+    public void cadastrar(MenuItem item) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void atualizar(MenuItem item){
+    public void atualizar(MenuItem item) {
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final PontoTuristico pontoAtualizar = listfiltrado.get(menuInfo.position);
 
@@ -127,7 +136,7 @@ public class ListaPontoTuristico extends AppCompatActivity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         list = dao.ObterTodos();
         listfiltrado.clear();
