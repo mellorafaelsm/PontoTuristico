@@ -1,5 +1,22 @@
 <resources>
-    <string name="app_name">PontosTuristicos-RafaelMello</string>
+    <string name="app_name">Pontos Turísticos</string>
+    <string name="btn_tirarFoto">Tirar Foto</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_settings">Configurações</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Mapas</string>
+    <string name="sync_header">Câmera</string>
+
+    <!-- Messages Preferences -->
+    <string name="zoom_title">Zoom padrão</string>
+    <string name="mapType_title">Definição de mapa padrão</string>
+    <string name="btn_cancelar">Cancelar</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>7
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 </resources>

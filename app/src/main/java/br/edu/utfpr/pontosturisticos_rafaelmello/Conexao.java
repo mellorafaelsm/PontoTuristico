@@ -17,7 +17,12 @@ public class Conexao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table pontoturistico(id integer primary key autoincrement, titulo varchar(255), latitude varchar(255), longitude varchar(255))");
+        db.execSQL("create table pontoturistico(" +
+                "id integer primary key autoincrement, " +
+                "titulo varchar(255), " +
+                "latitude varchar(255), " +
+                "longitude varchar(255)," +
+                "foto blob)");
     }
 
     @Override

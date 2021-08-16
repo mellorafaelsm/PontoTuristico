@@ -7,6 +7,15 @@ public class PontoTuristico implements Serializable {
     private String titulo;
     private String latitude;
     private String longitude;
+    private byte[] foto;
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
 
     public Integer getId() {
         return id;
